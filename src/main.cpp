@@ -2,7 +2,7 @@
 // For compilers that support precompilation, includes "wx/wx.h".
 #include <wx/wxprec.h>
 #ifndef WX_PRECOMP
-    #include <wx/wx.h>
+#include <wx/wx.h>
 #endif
 class MyApp : public wxApp
 {
@@ -13,10 +13,11 @@ class MyFrame : public wxFrame
 {
 public:
     MyFrame();
+
 private:
-    void OnHello(wxCommandEvent& event);
-    void OnExit(wxCommandEvent& event);
-    void OnAbout(wxCommandEvent& event);
+    void OnHello(wxCommandEvent &event);
+    void OnExit(wxCommandEvent &event);
+    void OnAbout(wxCommandEvent &event);
 };
 enum
 {
@@ -30,7 +31,7 @@ bool MyApp::OnInit()
     return true;
 }
 MyFrame::MyFrame()
-    : wxFrame(NULL, wxID_ANY, "Hello World")
+    : wxFrame(NULL, wxID_ANY, "wxWidgets Test Demo")
 {
     wxMenu *menuFile = new wxMenu;
     menuFile->Append(ID_Hello, "&Hello...\tCtrl-H",
@@ -42,23 +43,23 @@ MyFrame::MyFrame()
     wxMenuBar *menuBar = new wxMenuBar;
     menuBar->Append(menuFile, "&File");
     menuBar->Append(menuHelp, "&Help");
-    SetMenuBar( menuBar );
+    SetMenuBar(menuBar);
     CreateStatusBar();
     SetStatusText("Welcome to wxWidgets!");
     Bind(wxEVT_MENU, &MyFrame::OnHello, this, ID_Hello);
     Bind(wxEVT_MENU, &MyFrame::OnAbout, this, wxID_ABOUT);
     Bind(wxEVT_MENU, &MyFrame::OnExit, this, wxID_EXIT);
 }
-void MyFrame::OnExit(wxCommandEvent& event)
+void MyFrame::OnExit(wxCommandEvent &event)
 {
     Close(true);
 }
-void MyFrame::OnAbout(wxCommandEvent& event)
+void MyFrame::OnAbout(wxCommandEvent &event)
 {
     wxMessageBox("This is a wxWidgets Hello World example",
                  "About Hello World", wxOK | wxICON_INFORMATION);
 }
-void MyFrame::OnHello(wxCommandEvent& event)
+void MyFrame::OnHello(wxCommandEvent &event)
 {
     wxLogMessage("Hello world from wxWidgets!");
 }
